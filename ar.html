@@ -46,13 +46,29 @@
 </script>
   </head>
   <body>
-    <a-scene embedded="" arjs="trackingMethod: best; debugUIEnabled: false;" cursor="rayOrigin: mouse;" class="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="enabled: false;">
-      <a-anchor position="" rotation="" scale="" visible="" material="" arjs-anchor="" arjs-hit-testing="">
-        <a-gltf-model src="./coffee_bot/coffeeBot.gltf" position="0 0 0" rotation="-90 0 0" scale="0.01 0.01 0.01" animation-mixer="clip: Take 001; loop:repeat"> </a-gltf-model>
-      </a-anchor>
-      <a-camera-static position="" rotation="" scale="" visible="" material="" camera="">
-  	</a-camera-static>
-      <!-- <a-marker-camera preset='hiro'></a-marker-camera> -->
+    <a-scene vr-mode-ui="enabled: false;" cursor="rayOrigin: mouse;" arjs="debugUIEnabled: false;">
+        <!-- <a-box position="0 0.5 -2" rotation="30 30 0" color="skyblue"
+             event-set__enter="_event: mouseenter; material.color: yellowgreen; scale: 3 1 1"
+             event-set__leave="_event: mouseleave; material.color: skyblue; scale: 1 1 1"
+             jaojao=""
+             id="cube">
+             <a-animation attribute="rotation"
+             begin="click"
+             dur="500"
+             fill="forwards"
+             to="30 30 45"
+             id="changeable">
+</a-animation>
+        </a-box>
+        <a-box id="orange-cube" position="2 0.5 -2" rotation="30 30 0"
+      width="1" depth="1" height="1" color="#F16745"
+      navigate-on-click="url: http://google.com"></a-box>
+      <a-sky color="#ECECEC"></a-sky> -->
+      <a-marker preset='custom' type='pattern' url='pattern-marker-qr.patt'>
+        <a-gltf-model src="./mech_drone/scene.gltf" position="0 0 0" rotation="0 0 0" scale="0.01 0.01 0.01" animation-mixer="clip: Take 001; loop:repeat"> </a-gltf-model>
+      </a-marker>
+
+      <a-entity-camera></a-entity-camera>
     </a-scene>
   </body>
 </html>
