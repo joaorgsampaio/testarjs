@@ -64,8 +64,17 @@
       width="1" depth="1" height="1" color="#F16745"
       navigate-on-click="url: http://google.com"></a-box>
       <a-sky color="#ECECEC"></a-sky> -->
-      <a-gltf-model src="./mech_drone/scene.gltf" position="0 0 0" rotation="0 0 0" scale="0.01 0.01 0.01" animation-mixer="clip: Take 001; loop:repeat"> </a-gltf-model>
-      <a-marker-camera patternUrl='./pattern-market.patt'></a-marker-camera>
+      <a-anchor position="" rotation="" scale="" visible="" material="" arjs-anchor="" arjs-hit-testing="">
+        <a-marker type='pattern' url='./pattern-marker-l.patt'>
+          <a-box position='0 0.5 0' material='color: black;' soundhandler></a-box>
+        <!-- <a-gltf-model src="./mech_drone/scene.gltf" position="0 0 1" rotation="-90 0 0" scale="0.01 0.01 0.01" animation-mixer="clip: Take 001; loop:repeat"> </a-gltf-model> -->
+      </a-marker>
+      </a-anchor>
+      <a-entity camera></a-entity>
+      <!-- <a-camera-static position="" rotation="" scale="" visible="" material="" camera=""> -->
+    </a-camera-static>
+
+      <!-- <a-marker-camera patternUrl='https://jeromeetienne.github.io/AR.js/data/data/patt.hiro'></a-marker-camera> -->
     </a-scene>
   </body>
 </html>
