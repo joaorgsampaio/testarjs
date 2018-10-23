@@ -45,27 +45,62 @@
     }
   });
 
+  /**
+   * Specifies an envMap on an entity, without replacing any existing material
+   * properties.
+   */
+  AFRAME.registerComponent('cube-env-map', {
+    schema: {
+      path: {default: ''},
+      extension: {default: 'jpg'},
+      format: {default: 'RGBFormat'},
+      enableBackground: {default: false}
+    },
+
+    init: function () {
+      const data = this.data;
+
+      this.texture = new THREE.CubeTextureLoader().load([
+        data.path + 'posx.' + data.extension, data.path + 'negx.' + data.extension,
+        data.path + 'posy.' + data.extension, data.path + 'negy.' + data.extension,
+        data.path + 'posz.' + data.extension, data.path + 'negz.' + data.extension
+      ]);
+      this.texture.format = THREE[data.format];
+
+      if (data.enableBackground) {
+        this.el.sceneEl.object3D.background = this.texture;
+      }
+
+      this.applyEnvMap();
+      this.el.addEventListener('object3dset', this.applyEnvMap.bind(this));
+    },
+
+    applyEnvMap: function () {
+      const mesh = this.el.getObject3D('mesh');
+      const envMap = this.texture;
+
+      if (!mesh) return;
+
+      mesh.traverse(function (node) {
+        if (node.material && 'envMap' in node.material) {
+          node.material.envMap = envMap;
+          node.material.needsUpdate = true;
+        }
+      });
+    }
+  });
 </script>  </head>
   <body>
-    <a-scene embedded="" arjs="debugUIEnabled: false;" class="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="enabled: false;">
+    <a-scene embedded="" arjs="debugUIEnabled: false;" class="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="enabled: false;" navigate-on-click="url: https://www.leovegas.com/signup">
       <a-marker type='pattern' preset='pattern' url='paw.patt'>
-        <!-- <a-gltf-model src="./slot2/SlotMachineRig_test02.gltf" position="0 0.5 0" rotation="90 180 0" scale="2 2 2" animation-mixer="clip: Gramaphone; loop:repeat" sound="src: url(music.mp3); volume: 2; refDistance: 5; autoplay: true; loop: true"> </a-gltf-model> -->
-        <!-- <a-gltf-model src="./mech_drone/scene.gltf" position="0 1 1" rotation="90 180 0" scale="0.01 0.01 0.01" animation-mixer="clip: Take 001; loop:repeat"> </a-gltf-model> -->
-        <a-box position="0 0.5 0" rotation="30 30 0" color="skyblue"
-             jaojao=""
-             visible="true"
-             id="cube1">
-           </a-box>
-           <a-box position="0 0.5 0" rotation="30 30 0" color="#F16745"
-           jaojao=""
-           visible="false"
-           id="cube2"></a-box>
+        <a-gltf-model src="./slot/slotmachine.glb" position="0 0.5 0" rotation="90 180 0" scale="0.075 0.075 0.075" animation-mixer="clip: Gramaphone; loop:repeat" sound="src: url(music.mp3); volume: 2; refDistance: 5; autoplay: true; loop: true" cube-env-map="path: assets/Fjaderholmarna/"> </a-gltf-model>
       </a-marker>
       <a-camera-static position="" rotation="" scale="" visible="" material="" camera="">
       </a-camera-static>
-    <a-light color="#fff" position="0 5 0" angle="0" intensity="2.0"></a-light>
-    <a-light color="#fb7" position="-1 1 0" intensity="1.0"></a-light>
-    <a-light type="ambient" color="#444"></a-light>
+    <a-light color="#fff" position="0 10 0" angle="0" intensity="2.0"></a-light>
+    <a-light color="#fff" position="0 0 -10" angle="0" intensity="2.0"></a-light>
+    <a-light color="#fb7" position="-10 10 0" intensity="1.0"></a-light>
+    <a-light type="ambient" color="#CCC"></a-light>
     </a-scene>
   </body>
 </html>
