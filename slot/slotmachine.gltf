@@ -3,35 +3,35 @@
     {
       "bufferView": 0,
       "componentType": 5125,
-      "count": 186789,
+      "count": 176715,
       "type": "SCALAR"
     },
     {
       "bufferView": 1,
       "componentType": 5126,
-      "count": 55669,
+      "count": 51685,
       "max": [
-        0.76517528295517,
+        0.765175223350525,
         0.999999940395355,
         0.386222839355469
       ],
       "min": [
-        -0.76517528295517,
+        -0.765175223350525,
         -0.999999940395355,
-        -0.386222839355469
+        -0.387003779411316
       ],
       "type": "VEC3"
     },
     {
       "bufferView": 2,
       "componentType": 5126,
-      "count": 55669,
+      "count": 51685,
       "type": "VEC3"
     },
     {
       "bufferView": 3,
       "componentType": 5126,
-      "count": 55669,
+      "count": 51685,
       "type": "VEC2"
     }
   ],
@@ -42,31 +42,31 @@
   "bufferViews": [
     {
       "buffer": 0,
-      "byteLength": 747156,
+      "byteLength": 706860,
       "target": 34963
     },
     {
       "buffer": 0,
-      "byteLength": 668028,
-      "byteOffset": 747156,
+      "byteLength": 620220,
+      "byteOffset": 706860,
       "target": 34962
     },
     {
       "buffer": 0,
-      "byteLength": 668028,
-      "byteOffset": 1415184,
+      "byteLength": 620220,
+      "byteOffset": 1327080,
       "target": 34962
     },
     {
       "buffer": 0,
-      "byteLength": 445352,
-      "byteOffset": 2083212,
+      "byteLength": 413480,
+      "byteOffset": 1947300,
       "target": 34962
     }
   ],
   "buffers": [
     {
-      "byteLength": 2528564,
+      "byteLength": 2360780,
       "uri": "slotmachine.bin"
     }
   ],
