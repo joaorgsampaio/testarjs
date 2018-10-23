@@ -1,494 +1,180 @@
 {
-    "asset": {
-        "version": "2.0",
-        "generator": "Open Asset Import Library (assimp v3.1.77322876)"
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 186789,
+      "type": "SCALAR"
     },
-    "accessors": [
-        {
-            "bufferView": 0,
-            "byteOffset": 0,
-            "componentType": 5126,
-            "count": 65535,
-            "type": "VEC3",
-            "max": [
-                0.5380934476852417,
-                0.42066362500190737,
-                0.38622283935546877
-            ],
-            "min": [
-                -0.7651752829551697,
-                -0.9999999403953552,
-                -0.38622283935546877
-            ]
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 55669,
+      "max": [
+        0.76517528295517,
+        0.999999940395355,
+        0.386222839355469
+      ],
+      "min": [
+        -0.76517528295517,
+        -0.999999940395355,
+        -0.386222839355469
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 55669,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 55669,
+      "type": "VEC2"
+    }
+  ],
+  "asset": {
+    "generator": "Substance Painter 2018.2.3",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 747156,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 668028,
+      "byteOffset": 747156,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 668028,
+      "byteOffset": 1415184,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 445352,
+      "byteOffset": 2083212,
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 2528564,
+      "uri": "slotmachine.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "lambert6_baseColor.png"
+    },
+    {
+      "uri": "lambert6_occlusionRoughnessMetallic.png"
+    },
+    {
+      "uri": "lambert6_normal.png"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "OPAQUE",
+      "name": "lambert6",
+      "normalTexture": {
+        "index": 2
+      },
+      "occlusionTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
         },
-        {
-            "bufferView": 1,
-            "byteOffset": 0,
-            "componentType": 5126,
-            "count": 65535,
-            "type": "VEC3",
-            "max": [
-                1.0,
-                1.0,
-                1.0
-            ],
-            "min": [
-                -1.0,
-                -1.0,
-                -1.0
-            ]
-        },
-        {
-            "bufferView": 2,
-            "byteOffset": 0,
-            "componentType": 5126,
-            "count": 65535,
-            "type": "VEC2",
-            "max": [
-                0.9980673789978027,
-                1.0
-            ],
-            "min": [
-                0.0,
-                0.0035133957862854006
-            ]
-        },
-        {
-            "bufferView": 3,
-            "byteOffset": 0,
-            "componentType": 5126,
-            "count": 65535,
-            "type": "VEC2",
-            "max": [
-                1.0,
-                1.0
-            ],
-            "min": [
-                0.0,
-                0.0
-            ]
-        },
-        {
-            "bufferView": 4,
-            "byteOffset": 0,
-            "componentType": 5126,
-            "count": 65535,
-            "type": "VEC2",
-            "max": [
-                0.0,
-                1.0
-            ],
-            "min": [
-                0.0,
-                1.0
-            ]
-        },
-        {
-            "bufferView": 5,
-            "byteOffset": 0,
-            "componentType": 5123,
-            "count": 65535,
-            "type": "SCALAR",
-            "max": [
-                65534.0
-            ],
-            "min": [
-                0.0
-            ]
-        },
-        {
-            "bufferView": 6,
-            "byteOffset": 0,
-            "componentType": 5126,
-            "count": 65535,
-            "type": "VEC3",
-            "max": [
-                0.6703575253486633,
-                0.8655969500541687,
-                0.2761111259460449
-            ],
-            "min": [
-                -0.17131221294403077,
-                -0.6428269147872925,
-                -0.38622283935546877
-            ]
-        },
-        {
-            "bufferView": 7,
-            "byteOffset": 0,
-            "componentType": 5126,
-            "count": 65535,
-            "type": "VEC3",
-            "max": [
-                1.0,
-                1.0,
-                1.0
-            ],
-            "min": [
-                -1.0,
-                -1.0,
-                -1.0
-            ]
-        },
-        {
-            "bufferView": 8,
-            "byteOffset": 0,
-            "componentType": 5126,
-            "count": 65535,
-            "type": "VEC2",
-            "max": [
-                0.8777613639831543,
-                0.9970731139183044
-            ],
-            "min": [
-                0.004072666168212891,
-                0.0044615864753723148
-            ]
-        },
-        {
-            "bufferView": 9,
-            "byteOffset": 0,
-            "componentType": 5126,
-            "count": 65535,
-            "type": "VEC2",
-            "max": [
-                1.0,
-                1.0
-            ],
-            "min": [
-                0.0,
-                0.0
-            ]
-        },
-        {
-            "bufferView": 10,
-            "byteOffset": 0,
-            "componentType": 5126,
-            "count": 65535,
-            "type": "VEC2",
-            "max": [
-                0.0,
-                1.0
-            ],
-            "min": [
-                0.0,
-                1.0
-            ]
-        },
-        {
-            "bufferView": 11,
-            "byteOffset": 0,
-            "componentType": 5123,
-            "count": 65535,
-            "type": "SCALAR",
-            "max": [
-                65534.0
-            ],
-            "min": [
-                0.0
-            ]
-        },
-        {
-            "bufferView": 12,
-            "byteOffset": 0,
-            "componentType": 5126,
-            "count": 55719,
-            "type": "VEC3",
-            "max": [
-                0.7651752829551697,
-                0.9999999403953552,
-                0.29468783736228945
-            ],
-            "min": [
-                -0.4648253321647644,
-                0.20856083929538728,
-                0.23944614827632905
-            ]
-        },
-        {
-            "bufferView": 13,
-            "byteOffset": 0,
-            "componentType": 5126,
-            "count": 55719,
-            "type": "VEC3",
-            "max": [
-                1.0,
-                1.0,
-                1.0
-            ],
-            "min": [
-                -1.0,
-                -1.0,
-                -1.0
-            ]
-        },
-        {
-            "bufferView": 14,
-            "byteOffset": 0,
-            "componentType": 5126,
-            "count": 55719,
-            "type": "VEC2",
-            "max": [
-                0.46198368072509768,
-                1.0
-            ],
-            "min": [
-                0.0,
-                0.11421024799346924
-            ]
-        },
-        {
-            "bufferView": 15,
-            "byteOffset": 0,
-            "componentType": 5126,
-            "count": 55719,
-            "type": "VEC2",
-            "max": [
-                1.0,
-                1.0
-            ],
-            "min": [
-                0.0,
-                0.0
-            ]
-        },
-        {
-            "bufferView": 16,
-            "byteOffset": 0,
-            "componentType": 5126,
-            "count": 55719,
-            "type": "VEC2",
-            "max": [
-                0.22966480255126954,
-                1.0
-            ],
-            "min": [
-                0.0,
-                0.033260226249694827
-            ]
-        },
-        {
-            "bufferView": 17,
-            "byteOffset": 0,
-            "componentType": 5123,
-            "count": 55719,
-            "type": "SCALAR",
-            "max": [
-                55718.0
-            ],
-            "min": [
-                0.0
-            ]
+        "metallicRoughnessTexture": {
+          "index": 1
         }
-    ],
-    "buffers": [
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Slot_Machine",
+      "primitives": [
         {
-            "byteLength": 9339454,
-            "uri": "slotmachine.bin"
+          "attributes": {
+            "NORMAL": 2,
+            "POSITION": 1,
+            "TEXCOORD_0": 3
+          },
+          "indices": 0,
+          "material": 0,
+          "mode": 4
         }
-    ],
-    "bufferViews": [
-        {
-            "buffer": 0,
-            "byteOffset": 0,
-            "byteLength": 786420,
-            "target": 34962
-        },
-        {
-            "buffer": 0,
-            "byteOffset": 786420,
-            "byteLength": 786420,
-            "target": 34962
-        },
-        {
-            "buffer": 0,
-            "byteOffset": 1572840,
-            "byteLength": 524280,
-            "target": 34962
-        },
-        {
-            "buffer": 0,
-            "byteOffset": 2097120,
-            "byteLength": 524280,
-            "target": 34962
-        },
-        {
-            "buffer": 0,
-            "byteOffset": 2621400,
-            "byteLength": 524280,
-            "target": 34962
-        },
-        {
-            "buffer": 0,
-            "byteOffset": 3145680,
-            "byteLength": 131070,
-            "target": 34963
-        },
-        {
-            "buffer": 0,
-            "byteOffset": 3276752,
-            "byteLength": 786420,
-            "target": 34962
-        },
-        {
-            "buffer": 0,
-            "byteOffset": 4063172,
-            "byteLength": 786420,
-            "target": 34962
-        },
-        {
-            "buffer": 0,
-            "byteOffset": 4849592,
-            "byteLength": 524280,
-            "target": 34962
-        },
-        {
-            "buffer": 0,
-            "byteOffset": 5373872,
-            "byteLength": 524280,
-            "target": 34962
-        },
-        {
-            "buffer": 0,
-            "byteOffset": 5898152,
-            "byteLength": 524280,
-            "target": 34962
-        },
-        {
-            "buffer": 0,
-            "byteOffset": 6422432,
-            "byteLength": 131070,
-            "target": 34963
-        },
-        {
-            "buffer": 0,
-            "byteOffset": 6553504,
-            "byteLength": 668628,
-            "target": 34962
-        },
-        {
-            "buffer": 0,
-            "byteOffset": 7222132,
-            "byteLength": 668628,
-            "target": 34962
-        },
-        {
-            "buffer": 0,
-            "byteOffset": 7890760,
-            "byteLength": 445752,
-            "target": 34962
-        },
-        {
-            "buffer": 0,
-            "byteOffset": 8336512,
-            "byteLength": 445752,
-            "target": 34962
-        },
-        {
-            "buffer": 0,
-            "byteOffset": 8782264,
-            "byteLength": 445752,
-            "target": 34962
-        },
-        {
-            "buffer": 0,
-            "byteOffset": 9228016,
-            "byteLength": 111438,
-            "target": 34963
-        }
-    ],
-    "materials": [
-        {
-            "name": "lambert6",
-            "pbrMetallicRoughness": {
-                "baseColorFactor": [
-                    0.5,
-                    0.5,
-                    0.5,
-                    1.0
-                ],
-                "metallicFactor": 0.0
-            }
-        }
-    ],
-    "meshes": [
-        {
-            "name": "Slot_Machine",
-            "primitives": [
-                {
-                    "mode": 4,
-                    "material": 0,
-                    "indices": 5,
-                    "attributes": {
-                        "POSITION": 0,
-                        "NORMAL": 1,
-                        "TEXCOORD_0": 2,
-                        "TEXCOORD_1": 3,
-                        "TEXCOORD_2": 4
-                    }
-                },
-                {
-                    "mode": 4,
-                    "material": 0,
-                    "indices": 11,
-                    "attributes": {
-                        "POSITION": 6,
-                        "NORMAL": 7,
-                        "TEXCOORD_0": 8,
-                        "TEXCOORD_1": 9,
-                        "TEXCOORD_2": 10
-                    }
-                },
-                {
-                    "mode": 4,
-                    "material": 0,
-                    "indices": 17,
-                    "attributes": {
-                        "POSITION": 12,
-                        "NORMAL": 13,
-                        "TEXCOORD_0": 14,
-                        "TEXCOORD_1": 15,
-                        "TEXCOORD_2": 16
-                    }
-                }
-            ]
-        }
-    ],
-    "nodes": [
-        {
-            "matrix": [
-                44.385929107666019,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                44.385929107666019,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                44.385929107666019,
-                0.0,
-                -5.821605682373047,
-                2.6730728149414064,
-                7.782567977905273,
-                1.0
-            ],
-            "children": [
-                1
-            ]
-        },
-        {
-            "name": "Slot_Machine",
-            "mesh": 0
-        }
-    ],
-    "scenes": [
-        {
-            "nodes": [
-                0
-            ]
-        }
-    ],
-    "scene": 0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "name": "root",
+      "scale": [
+        44.385929107666,
+        44.385929107666,
+        44.385929107666
+      ],
+      "translation": [
+        -5.82160568237305,
+        2.67307281494141,
+        7.78256797790527
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "Slot_Machine"
+    },
+    {
+      "mesh": 0,
+      "name": "Slot_Machine"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9985,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    }
+  ]
 }
