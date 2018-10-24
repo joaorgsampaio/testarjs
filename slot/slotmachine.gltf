@@ -18,7 +18,7 @@
       "min": [
         -0.765175223350525,
         -0.999999940395355,
-        -0.387003779411316
+        -0.395427256822586
       ],
       "type": "VEC3"
     },
@@ -79,11 +79,22 @@
     },
     {
       "uri": "lambert6_normal.png"
+    },
+    {
+      "uri": "lambert6_emissive.png"
     }
   ],
   "materials": [
     {
       "alphaMode": "OPAQUE",
+      "emissiveFactor": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "emissiveTexture": {
+        "index": 3
+      },
       "name": "lambert6",
       "normalTexture": {
         "index": 2
@@ -175,6 +186,10 @@
     {
       "sampler": 0,
       "source": 2
+    },
+    {
+      "sampler": 0,
+      "source": 3
     }
   ]
 }
