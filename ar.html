@@ -28,6 +28,8 @@
   var soundStatus = true
   var spinEnabled = true
 
+  var winLoopCounter = 0
+
   AFRAME.registerComponent('animation-control', {
   schema: {default: ''},
   init() {
@@ -36,6 +38,14 @@
 
     el.addEventListener('animation-loop', function () {
       console.log('ANIMATION-LOOP')
+
+      if (machineStatus == 7) {
+        winLoopCounter++;
+
+        if (winLoopCounter == 1) {
+          gameFinished()
+        }
+      }
     });
 
     el.addEventListener('animation-finished', function () {
@@ -44,8 +54,8 @@
       updateAnimation();
 
       if (spinEnabled == true) {
-        document.getElementById("buttonspin").style.opacity = 1.0;
-        document.getElementById("buttonspin").style.pointerEvents = "auto";
+        document.getElementById("buttonstart").style.opacity = 1.0;
+        document.getElementById("buttonstart").style.pointerEvents = "auto";
       }
     });
     }
@@ -96,11 +106,14 @@
     }
   });
 
+
   function updateAnimation() {
     machineStatus++;
 
     var animationClip = ""
     var loop = ""
+
+    var player = null
 
     switch (machineStatus) {
       case 0:
@@ -110,62 +123,76 @@
       case 1:
       animationClip = "slot_spin_1"
       loop = "once"
+      document.getElementById("slotmachine").setAttribute("sound","src: #spin_music; volume: 1; refDistance: 5; autoplay: true; loop: false")
       break;
       case 2:
       animationClip = "slot_idle_2"
       loop = "repeat"
+      setTimeout(playIdleMusic(), 500)
       break;
       case 3:
       animationClip = "slot_spin_2"
       loop = "once"
+      document.getElementById("slotmachine").setAttribute("sound","src: #spin_music; volume: 1; refDistance: 5; autoplay: true; loop: false")
       break;
       case 4:
       animationClip = "slot_idle_3"
       loop = "repeat"
+      setTimeout(playIdleMusic(), 500)
       break;
       case 5:
       animationClip = "slot_spin_3"
       loop = "once"
       spinEnabled = false
+      document.getElementById("slotmachine").setAttribute("sound","src: #spin_music; volume: 1; refDistance: 5; autoplay: true; loop: false")
       break;
       case 6:
       animationClip = "slot_win_1"
       loop = "once"
+      document.getElementById("slotmachine").setAttribute("sound","src: #win_music; volume: 1; refDistance: 5; autoplay: true; loop: false")
       break;
       default:
       animationClip = "slot_win_loop"
       loop = "repeat"
-      gameFinished()
+      // gameFinished()
     }
 
     document.getElementById("slotmachine").setAttribute("animation-mixer","clip: " + animationClip + "; loop:" + loop)
+  }
+
+  function playIdleMusic() {
+    document.getElementById("slotmachine").setAttribute("sound","src: #idle_music; volume: 1; refDistance: 5; autoplay: true; loop: true")
   }
 
   function gameFinished() {
     console.log("GAME-FINISHED")
     document.getElementById("popup").style.visibility = "visible";
     document.getElementById("buttonmute").style.visibility = "hidden";
-    document.getElementById("buttonspin").style.visibility = "hidden";
+    document.getElementById("buttonstart").style.visibility = "hidden";
   }
 
   function startGame() {
     console.log("GAME-STARTED")
-    document.getElementById("buttonstart").style.visibility = "hidden";
+    // document.getElementById("buttonstart").style.visibility = "hidden";
+    document.getElementById("buttonstart").setAttribute("src","./assets/spin.png"); // = "hidden";
+    document.getElementById("buttonstart").setAttribute("onClick","spin()")
     document.getElementById("buttonmute").style.visibility = "visible";
-    document.getElementById("buttonspin").style.visibility = "visible";
+    // document.getElementById("buttonspin").style.visibility = "visible";
+    spin();
   }
 
   function spin() {
     console.log("SPIN!!")
-    document.getElementById("buttonspin").style.opacity = 0.5;
-    document.getElementById("buttonspin").style.pointerEvents = "none";
+    document.getElementById("buttonstart").style.opacity = 0.5;
+    document.getElementById("buttonstart").style.pointerEvents = "none";
     updateAnimation();
   }
 
   function muteSound() {
     soundStatus = !soundStatus
     document.getElementById("buttonmute").setAttribute("src",soundStatus == true ? "./assets/mute.png" : "./assets/unmute.png")
-    document.getElementById("slotmachine").setAttribute("sound",soundStatus == true ? "src: url(music.mp3); volume: 2; refDistance: 5; autoplay: true; loop: true" : "src: url(music.mp3); volume: 0; refDistance: 5; autoplay: true; loop: true")
+    // document.getElementById("soundplayer").setAttribute("sound",soundStatus == true ? "volume: 1;" : "volume: 0;")
+    // document.getElementById("soundplayer").setAttribute("src",soundStatus == true ? "volume: 1;" : "volume: 0;")
   }
 
   function removeTermsAndConditions() {
@@ -181,8 +208,30 @@
   <body>
     <div class="arcontent">
     <a-scene embedded arjs="debugUIEnabled: false;" class="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="enabled: false;">
-      <a-marker type='pattern' preset='pattern' url='paw.patt'>
-        <a-gltf-model id="slotmachine" src="./slotmachine/slot_machine_anims_seq_particle.gltf" position="0 0.5 0" rotation="90 180 0" scale="10 10 10" animation-control="" animation-mixer="clip: slot_idle_1; loop:repeat" cube-env-map="path: assets/Fjaderholmarna/" sound="src: url(music.mp3); volume: 2; refDistance: 5; autoplay: true; loop: true"> </a-gltf-model>
+      <a-assets>
+        <!-- <audio id="test_music" src="./assets/music.mp3" preload="auto"></audio> -->
+        <!-- <audio id="initial_music" src="./assets/slot_idle_1x.mp3" preload="auto"></audio> -->
+        <!-- <audio id="spin_music" src="./assets/slot_spin_1x.mp3" preload="auto"></audio> -->
+        <!-- <audio id="idle_music" src="./assets/slot_idle_2x.mp3" preload="auto"></audio> -->
+        <!-- <audio id="win_music" src="./assets/slot_win_1x.mp3" preload="auto"></audio> -->
+        <!-- <audio id="win_loop_music" src="./assets/slot_win_loop_altx.mp3" preload="auto"></audio> -->
+
+        <a-asset-item id="initial_music" src="./assets/slot_idle_1x.mp3" response-type="arraybuffer"></a-asset-item>
+        <a-asset-item id="idle_music" src="./assets/slot_idle_2x.mp3" response-type="arraybuffer"></a-asset-item>
+        <a-asset-item id="spin_music" src="./assets/slot_spin_1x.mp3" response-type="arraybuffer"></a-asset-item>
+        <a-asset-item id="win_music" src="./assets/slot_win_1x.mp3" response-type="arraybuffer"></a-asset-item>
+        <!-- <a-asset-item id="win_loop_music" src="./assets/slot_win_loop_altx.mp3" response-type="arraybuffer"></a-asset-item> -->
+      </a-assets>
+
+      <a-marker id="armarker" type='pattern' preset='pattern' url='paw.patt'>
+        <a-gltf-model id="slotmachine" src="./slotmachine/slot_machine_anims_seq_particle.gltf" position="0 0.5 0" rotation="90 180 0" scale="20 20 20" animation-control="" animation-mixer="clip: slot_idle_1; loop:repeat" cube-env-map="path: assets/Fjaderholmarna/" sound="src: #initial_music; volume: 1; refDistance: 5; autoplay: true; loop: true"> </a-gltf-model>
+        <!-- <a-gltf-model id="slotmachine" src="./slotmachine/slot_machine_anims_seq_particle.gltf" position="0 0.5 0" rotation="90 180 0" scale="10 10 10" animation-control="" animation-mixer="clip: slot_idle_1; loop:repeat" cube-env-map="path: assets/Fjaderholmarna/" sound="src: url(music.mp3); volume: 2; refDistance: 5; autoplay: true; loop: true"> </a-gltf-model>
+        <a-gltf-model id="slotmachine" src="./slotmachine/slot_machine_anims_seq_particle.gltf" position="0 0.5 0" rotation="90 180 0" scale="10 10 10" animation-control="" animation-mixer="clip: slot_idle_1; loop:repeat" cube-env-map="path: assets/Fjaderholmarna/"> </a-gltf-model> -->
+        <!-- <a-entity id="player_initial_music" sound="src: #initial_music; volume: 1; refDistance: 5; autoplay: true; loop: true;"></a-entity>
+        <a-entity id="player_spin_music" sound="src: #initial_music; volume: 1; refDistance: 5; autoplay: false; loop: false;"></a-entity>
+        <a-entity id="player_idle_music" sound="src: #initial_music; volume: 1; refDistance: 5; autoplay: false; loop: true;"></a-entity>
+        <a-entity id="player_win_music" sound="src: #initial_music; volume: 1; refDistance: 5; autoplay: false; loop: false;"></a-entity>
+        <a-entity id="player_win_loop_music" sound="src: #initial_music; volume: 1; refDistance: 5; autoplay: false; loop: false;"></a-entity> -->
       </a-marker>
       <a-camera-static position="" rotation="" scale="" visible="" material="" camera="">
       </a-camera-static>
@@ -192,10 +241,13 @@
     </a-scene>
     </div>
     <div id="interface">
-      <div id="topInterface" style="position: absolute; top: 50; left: 0; height:75; width:100%; background: #FD5C3C88;">
+      <!-- <div id="topInterface" style="position: absolute; top: 30; left: 0; height:75; width:100%; background: #FD5C3C88;">
+        <div id="whiteLineTop" style="position: absolute; top: 0; left: 0; height:2; width:100%; background: #FFFFFF;"></div>
         <img style="display: block; margin-left: auto; margin-right: auto;" src="./assets/leovegas.png" />
-      </div>
-      <div id="bottomInterface" style="position: absolute; bottom: 100; left: 0; height:100; width:100%;">
+        <div id="whiteLineBottom" style="position: absolute; bottom: 0; left: 0; height:2; width:100%; background: #FFFFFF;"></div>
+      </div> -->
+      <!-- removing terms and conditions for the demo, so reset the bottom to 100 when needed down here -->
+      <div id="bottomInterface" style="position: absolute; bottom: 0; left: 0; height:120; width:100%;">
         <div class="container">
           <div class="row">
             <div class="col-4 text-center">
@@ -206,15 +258,16 @@
               <!-- <img id="buttonstart" onClick="gameFinished()" style="display: block; margin-left: auto; margin-right: auto;" src="./assets/start.png" /> -->
             </div>
             <div class="col-4 text-center">
-              <img id="buttonspin" onClick="spin()" style="display: block; margin-left: auto; margin-right: 16; visibility: hidden;" src="./assets/spin.png" />
+              <!-- <img id="buttonspin" onClick="spin()" style="display: block; margin-left: auto; margin-right: 16; visibility: hidden;" src="./assets/spin.png" /> -->
             </div>
           </div>
         </div>
-        <div id="termsandconditions" onClick="removeTermsAndConditions()" style="background: #5D5D5D; width: 100%; height: 100; bottom: 0; visibility: visible;">
+        <!-- removing terms and conditions for the demo (and not sure if we need this, the game doesn't show any real money) -->
+        <!-- <div id="termsandconditions" onClick="removeTermsAndConditions()" style="background: #5D5D5D; width: 100%; height: 100; bottom: 0; visibility: visible;">
           <p style="color: #00000000; font-size: 4pt;">.</p>
           <p style="font-size: 10pt; font-family: arial; color: #CCCCCC; margin-left: 16px; margin-top: 0px; margin-right: 16px;">This gameplay is for demonstration purposes only and you won't be able to receive any of your winnings.</p>
           <p style="font-size: 10pt; font-family: arial; color: #CCCCCC; margin-left: 16px; margin-top: 0px; margin-right: 16px;"><fakelink style="text-decoration: underline;">Help</fakelink>&nbsp;&nbsp;<fakelink style="text-decoration: underline;">Terms & Conditions</fakelink>&nbsp;&nbsp;<fakelink style="text-decoration: underline;">Responsible Gaming</fakelink></p>
-        </div>
+        </div> -->
       </div>
     </div>
     <div id="popup" style="position: absolute; bottom: 0; left: 0; height:100%; width:100%; visibility: hidden;">
